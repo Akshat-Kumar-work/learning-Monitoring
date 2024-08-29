@@ -53,3 +53,22 @@ services:
    volumes:
      - ./prometheus-config.yml:/etc/prometheus/prometheus.yaml
 ```
+
+# GRAFANA
+- It is used for metrics-visualization 
+- It uses the metrics which was scrapped by prometheus server
+- It integrate the prometheus into its service
+
+- To run the grafana image directly into docker from CLI
+```
+docker run -d -p 3000:3000 --name=grafana grafana/grafana-oss
+```
+- To run from docker-compose
+```
+  grafana:
+    image: grafana/grafana-oss
+    container_name: grafana
+    ports:
+      - 3000:3000
+    restart: always
+```
