@@ -41,7 +41,7 @@ scrape_configs:
     -targets: [" 192.168.1.16:8000"] #from this local-host/ourIPaddress:port
 ```
 
-- Create docker-compose.ymal for prometheus server
+- Create docker-compose.yaml for prometheus server
 ```
 version: "3"
 
@@ -51,5 +51,5 @@ services:
    ports:
      - 9090:9090
    volumes:
-     - ./prometheus-config.yml:/etc/prometheus/prometheus.ymal
+     - ./prometheus-config.yml:/etc/prometheus/prometheus.yaml
 ```
