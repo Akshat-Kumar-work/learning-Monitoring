@@ -1,5 +1,6 @@
 import express from "express";
-import { reqCount } from "./custom-metrics/requestCount";
+import { CountReq } from "./custom-metrics/requestCount";
+import { ActiverUserGauge } from "./custom-metrics/customGauge";
 import client from "prom-client";
 
 const app = express();
@@ -7,7 +8,8 @@ const app = express();
 app.use(express.json());
 
 //using custom middleware
-app.use(reqCount);
+app.use(CountReq);
+app.use(ActiverUserGauge)
 
 app.get("/user", (req, res) => {
     res.send({
