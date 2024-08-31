@@ -1,16 +1,19 @@
 import express from "express";
+const prometheusMiddleware = require('express-prometheus-middleware');
+import promClient from "prom-client";
 const app = express();
 
-app.get('/user',(req,res)=>{
-    res.json({
-        name:"akshat"
-    })
-})
+app.use(prometheusMiddleware({
+    metricsPath: '/metrics',
+    collectDefaultMetrics: true,// Collects default metrics such as memory, CPU usage, etc.
+    requestDurationBuckets: [0.1, 0.5, 1, 1.5],// Histogram buckets for request duration->response sizes
+  }));
 
-app.post('/user',(req,res)=>{
+app.get('/user',async(req,res)=>{
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     res.json({
         name:"akshat"
     })
-})
+});
 
 app.listen(3000);
