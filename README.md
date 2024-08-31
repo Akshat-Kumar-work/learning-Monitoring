@@ -12,8 +12,12 @@ Gauge-> It is a metric that can go up and down,example is measuring the current 
 
 Histogram->It is a req duration, response size and counts them in configurable buckets,example is measuring http request
 It provide all the response time present in bucket-> means the req which took that much time or fall under that much time
-sum gives you the total accumulated value of the observed metric (total duration).
-count gives you the number of observations (total requests).
+
+bucket in histogram  provide data of req for all response time, which req took
+
+sum in histogram gives you the total accumulated value of the observed metric (total duration).
+
+count in histogram gives you the number of observations (total requests).
 
 - Install the library
 ```
