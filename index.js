@@ -6,9 +6,9 @@ const promClient = require('prom-client');
 const app = express();
 
 //step 1 Prometheus
-//collecting default metrics of our server
+//collecting default metrics of our server, not any custom metrics
 const collectDefaultMetrics = promClient.collectDefaultMetrics;
-//registering it
+//registering the default metrics
 collectDefaultMetrics({register:promClient.register});
 
 
