@@ -2,6 +2,7 @@ import express from "express";
 import { CountReq } from "./custom-metrics/requestCount";
 import { ActiverUserGauge } from "./custom-metrics/customGauge";
 import client from "prom-client";
+import { reqDuration } from "./custom-metrics/customHistogram";
 
 const app = express();
 
@@ -10,6 +11,7 @@ app.use(express.json());
 //using custom middleware
 app.use(CountReq);
 app.use(ActiverUserGauge)
+app.use(reqDuration);
 
 app.get("/user", (req, res) => {
     res.send({
