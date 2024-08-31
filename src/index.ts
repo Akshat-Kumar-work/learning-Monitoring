@@ -1,6 +1,6 @@
 import express from "express";
 const prometheusMiddleware = require('express-prometheus-middleware');
-import promClient from "prom-client";
+//import promClient from "prom-client"; we don't need to use here 
 const app = express();
 
 app.use(prometheusMiddleware({
@@ -11,7 +11,7 @@ app.use(prometheusMiddleware({
 
 app.get('/user',async(req,res)=>{
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    res.json({
+    res.status(200).json({
         name:"akshat"
     })
 });
